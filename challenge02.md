@@ -1,46 +1,46 @@
-# 🛒 Challenge 2: Add an Item to the Website
-
+# 🛒 Challenge 2: Update Cart Total
 ## 📝 Overview
 
-Challenge 2 focuses on enhancing your website by adding a new product/item along with its **price** and **specifications**.
 
-**This challenge consists of the following tasks:**
+Challenge 2 focuses on calculating and updating the cart total dynamically as items are added or removed from the shopping cart.
 
-- Add a new product to the page
-- Include the product's name, price, and a list of specifications
-- Style the item card to match the rest of the site
+This challenge consists of the following tasks:
+##🔧 a. Add Items to the Cart
+The cart should allow users to add items with their names, prices, and quantities.
 
----
+✅ Steps
+In your cart page (cart.html), create a form or interface to add items to the cart. Each item should have:
 
-## 🧩 a. Create a Product Item Card
+Item name
 
-The new item should be added in the main content area using HTML. It must display:
+Item price
 
-- ✅ Product name
-- ✅ Product price
-- ✅ Product specifications (at least 3)
+Item quantity
 
-<p align="center">
-  <img src="./assets/challenge02-product-preview.png" width="400px"/>
-  <br/>
-  <b>Example of a Product Card</b>
-</p>
+When an item is added to the cart, ensure it appears in a list with the following information:
 
----
+Product Name
 
-### ✅ Steps
+Product Price
 
-1. Open the `index.html` file.
-2. Find or create a `<div>` container for your products.
-3. Add the following HTML structure inside it:
+Quantity
 
-```html
-<div class="product-card">
-  <h2 class="product-title">Eco Water Bottle</h2>
-  <p class="product-price">$12.99</p>
-  <ul class="product-specs">
-    <li>500ml capacity</li>
-    <li>Made from BPA-free materials</li>
-    <li>Keeps drinks cold for 12 hours</li>
-  </ul>
+##🔧 b. Update Cart Total
+Each time an item is added, removed, or its quantity changes, the cart's total price must be updated dynamically.
+
+✅ Steps
+After adding/removing an item, calculate the total price based on the prices and quantities.
+
+Display the updated cart total at the bottom of the cart.
+
+<div class="cart-item">
+  <h3 class="item-name">Eco Water Bottle</h3>
+  <p class="item-price">$12.99</p>
+  <input type="number" class="item-quantity" value="1" />
+  <button class="remove-item">Remove</button>
+</div>
+
+cart total
+<div class="cart-total">
+  <h3>Total: $12.99</h3>
 </div>
