@@ -1,46 +1,52 @@
-# 🛒 Challenge 2: Update Cart Total
+# 💡 Challenge 2 Update Cart Total
+
 ## 📝 Overview
 
+Challenge 2 focuses on adding interactivity by dynamically updating the **total cart amount** when a user changes item quantities.
 
-Challenge 2 focuses on calculating and updating the cart total dynamically as items are added or removed from the shopping cart.
+**This challenge consists of one key feature:**
 
-This challenge consists of the following tasks:
-##🔧 a. Add Items to the Cart
-The cart should allow users to add items with their names, prices, and quantities.
+- Update the total price in the shopping cart based on item quantity changes.
 
-✅ Steps
-In your cart page (cart.html), create a form or interface to add items to the cart. Each item should have:
+---
 
-Item name
+## 🔧 a. Dynamically Update the Cart Total
 
-Item price
+The goal is to provide a responsive user experience by calculating and displaying the total price whenever item quantities are modified.
 
-Item quantity
+<p align="center">
+  <img src="./assets/challenge03-cart-total-before.png" width="400px"/>
+  <br/>
+  <b>Before</b>: Total is incorrect or static
+</p>
 
-When an item is added to the cart, ensure it appears in a list with the following information:
+### ✅ Steps
 
-Product Name
+1. Open the `cart.html` file.
+2. Ensure each cart item includes:
+   - A `span` or `div` element with the class `.price` and a `data-price` attribute
+   - An `<input>` element of type `number` with the class `.quantity`
+3. Add a `<span>` element with the `id="cart-total"` to display the total.
+4. Implement a JavaScript function that:
+   - Listens for changes in quantity
+   - Recalculates the total price
+   - Updates the content of `#cart-total`
 
-Product Price
+---
 
-Quantity
+### 💻 Example HTML Structure
 
-##🔧 b. Update Cart Total
-Each time an item is added, removed, or its quantity changes, the cart's total price must be updated dynamically.
-
-✅ Steps
-After adding/removing an item, calculate the total price based on the prices and quantities.
-
-Display the updated cart total at the bottom of the cart.
+```html
+<div class="cart-item">
+  <p>Eco Bottle</p>
+  <span class="price" data-price="10.99">$10.99</span>
+  <input type="number" class="quantity" value="1" min="1" />
+</div>
 
 <div class="cart-item">
-  <h3 class="item-name">Eco Water Bottle</h3>
-  <p class="item-price">$12.99</p>
-  <input type="number" class="item-quantity" value="1" />
-  <button class="remove-item">Remove</button>
+  <p>Reusable Bag</p>
+  <span class="price" data-price="5.49">$5.49</span>
+  <input type="number" class="quantity" value="2" min="1" />
 </div>
 
-cart total
-<div class="cart-total">
-  <h3>Total: $12.99</h3>
-</div>
+<h3>Total: $<span id="cart-total">0.00</span></h3>
