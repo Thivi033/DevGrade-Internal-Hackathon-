@@ -1,99 +1,122 @@
-ShopMaster E-commerce Challenge
-This is a half-built e-commerce web application with 5 challenges for you to complete. The project includes HTML, CSS, and JavaScript files for the client-side, as well as a simple Express server for the backend.
+Welcome to Internal Hackathon 2024
+Setting up your environment
+Solving the challenges
+Getting support
+References
+Setting up your environment
+This section helps you to understand the prerequisites required and how to work with the codebase. Please read through carefully and follow the instructions to understand the codebase of this project.
 
-Getting Started
-Install Node.js if you haven't already (https://nodejs.org)
-Install the dependencies for the server:
-cd server
+Prerequisites (Mandatory)
+Installations of stable versions of Git, Node.js and npm are required on your computer. You must also be proficient in working with the aforementioned technologies.
+
+Install Git
+
+Install NodeJS 18.18.0
+
+Recommended: To ensure seamless management of multiple Node.js versions on your machine, it is highly recommended to use a Node Version Manager (NVM).
+
+    For Windows -: Download the .exe file
+    Mac and Linux -: Refer this
+
+
+For macOS users, it is recommended to prepend sudo to the installation commands to ensure they have the required permissions.
+
+We recommend that you use Visual Studio Code and install the Live Server extension for a better developer experience.
+
+Email Communication regarding Preparation and Execution
+You will first receive an invitation email regarding the final day. This email will be sent either on the day of the final hackathon or beforehand. It will include a user guide, which we recommend reviewing carefully to familiarize yourself with the process.
+
+At the scheduled time, you will receive another email notifying you that the hackathon has started. This email will contain a link to access the hackathon details. Please use the link to find the clone URL and the Git credentials to clone your repository. Note that each team will have a single repository assigned to them.
+
+Clone the project to your local computer
+The Git repository URL and credentials will be available at the start of the contest through a link.
+
+Use Git to clone the project to the local development environment using the credentials that will be shared with the team leader.
+
+git clone <repository-url>
+Note for Windows users: Use cmd as the terminal to run commands.
+
+Installing dependencies
+Once you clone the project from your team's Git repository, run the following command to install dependencies.
+
 npm install
-Start the server:
+Rename env file
+The repository contains an environment configuration file. Please rename it to .env to follow standard conventions for environment variable management.
+
+Validate if the environment is correctly setup
+You can run the Sanity test file in the tests directory with the below command.
+
+For Windows users,
+
+npm test _sanity.test.js
+Note: If you get an error while running this command, make sure you have set all the prerequisites correctly on your machine.
+
+Setting up the development database
+The following commands will create a SQLite database called main.sqlite3 in your root folder for development purposes. The migrate command deletes the existing database and creates a new one with the DB schema, whereas the seed command populates the DB with some initial data. These steps are required for running the application.
+
+to recreate the database
+npm run migrate
+to populate initial data
+npm run seed
+If you do change db/seeds/** files, the database schema changes with migrations and it may break your test cases and the application. Therefore, ensure not to change or modify files within the db and tests directories.
+
+Building and running the application
+To start the server (without nodemon) use the following command:
+
 npm start
-Open your browser and navigate to http://localhost:3000
-The Challenges
-You need to complete 5 challenges in this project. Each challenge tests a different aspect of web development. After completing the challenges, you can check your score by clicking the "Checkout" button or pressing Ctrl+Alt+R.
+Click on the index.html file and click on the option "Open with Live Server" as shown in the screenshot below.
 
-Challenge 1: Site Title Customization
-Objective: Change the site title and tagline to make the site your own.
 
-Steps:
 
-Open index.html
-Find the site title with the ID site-title
-Change the text content to a different title
-Success Criteria: The site title is different from the default "ShopMaster"
+Add .gitignore
+You will have to note that the project code has no .gitignore file. Please add a .gitignore file with the following content.
 
-Challenge 2: Cart Totals Calculation
-Objective: Implement the cart totals calculation function.
+node_modules
+config/node_modules
+.env
+.idea
+package-lock.json
+.vscode
+*.sqlite3
+*.xml
+It is advised that one member of your team create the file, commit, and push the .gitignore file to the remote repository with the following commands.
 
-Steps:
+Commit and Push code to origin
+git add .
+git commit -m "adding .gitignore file"
+git push
+Then other team members can pull the changes from the remote repository to receive the .gitignore file to their local machines.
 
-Open js/app.js
-Find the updateCartTotals() function
-Implement the function to:
-Calculate the subtotal (sum of price * quantity for all items)
-Calculate the tax (subtotal * TAX_RATE)
-Calculate the total (subtotal + tax)
-Update the respective elements with the formatted values
-Success Criteria: When items are added to the cart, the subtotal, tax, and total amounts are correctly calculated and displayed.
+git pull
+This is how you may use git to collaborate as a team to solve challenges.
 
-Challenge 3: Discount Calculator
-Objective: Implement the discount calculator function.
+Overview
+ShopMaster E-commerce Challenge This is a half-built e-commerce web application with 5 challenges for you to complete. The project includes HTML, CSS, and JavaScript files for the client-side, as well as a simple Express server for the backend.
 
-Steps:
+Features
+Executing the Tests
+Use the below commands to run the tests. When you FIRST run, all the tests except _sanity.test will fail. This is expected.
 
-Open js/app.js
-Find the calculateDiscount() function
-Implement the function to:
-Get the original price from the input field
-Get the discount percentage from the input field
-Calculate the final price after applying the discount
-Calculate the savings amount
-Update the respective elements with the formatted values
-Success Criteria: When values are entered and the Calculate button is clicked, the correct final price and savings amount are displayed.
+To run a single test file of a challenge:
 
-Challenge 4: Product Filtering
-Objective: Implement a product filtering function.
+npm test challenge01.test.js
 
-Steps:
+As you complete the challenges, the respective test cases will be passed one by one. When you complete all the tasks of a challenge, all test cases of the respective challenge should pass. Every DevQuest challenge has a test case that you can run to validate the successful completion of the challenge.
 
-Add a search input or filter controls to the products section in index.html
-Create a function in js/app.js to filter products based on user input
-Update the product display to show only filtered products
-Success Criteria: Users can filter/search products, and the product list updates accordingly.
+Note: Test cases are not using the main.sqlite3 database. Every test case creates an isolated in-memory database.
 
-Challenge 5: Local Storage Integration
-Objective: Save and load the cart from localStorage.
+Legitimacy of your solution
+Any attempt to compromise the integrity of the contest will unconditionally disqualify your team. Therefore please ensure you avoid attempting:
 
-Steps:
+Tampering files in the tests folder or config folder
+Hard coding values or logic to pass the test without solving the challenge legitimately
+Solving the challenges
+You can now try out the challenges.
 
-Modify the updateCart() function in js/app.js to save the cart to localStorage
-Create functions to:
-Save the cart to localStorage whenever it changes
-Load the cart from localStorage when the page loads
-Update the init() function to load the cart on page load
-Success Criteria: When items are added to the cart, they persist even after page refresh.
+| Challenge 01 | Challenge 02 |
 
-Scoring
-Your progress is tracked in js/score.js. Each completed challenge contributes to your overall score. You can check your score at any time by clicking the "Checkout" button or pressing Ctrl+Alt+R.
+If your sanity test passes and you are able to run the application, now you can proceed to the challenges. All the challenges are documented in their own file. Please visit the links below, read them carefully, and get started solving them.
 
-API Endpoints
-The server provides the following API endpoints:
-
-GET /api/products - Get all products
-GET /api/products/:id - Get a single product by ID
-POST /api/checkout - Process a checkout (requires items and customer info)
-POST /api/discount - Apply a discount code
-Sample Discount Codes
-WELCOME10 - 10% discount
-SPRING25 - 25% discount
-FREESHIP - 5% discount (free shipping)
-Need Help?
-If you get stuck, here are some tips:
-
-Check the browser console for errors
-Review the specific requirements for each challenge
-Look at the tests in js/score.js to understand what's being checked
-Use console.log() to debug your code
-Good luck with the challenges!
-
-"# DevGrade-Internal-Hackathon-" 
+Happy Coding !
+Getting support
+There will be minimal to no support available on the context day. We are not in a position to clarify challenge descriptions on an individual basis. However, in case of a setting up the project need, you may contact the technical support team via a chat on WhatsApp (No support for technical doubts) to the phone number +94 70 583 4090.
