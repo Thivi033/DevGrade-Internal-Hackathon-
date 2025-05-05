@@ -1,46 +1,52 @@
-# 🛒 Challenge 2: Add an Item to the Website
+# 💡 Challenge 2 Update Cart Total
 
 ## 📝 Overview
 
-Challenge 2 focuses on enhancing your website by adding a new product/item along with its **price** and **specifications**.
+Challenge 2 focuses on adding interactivity by dynamically updating the **total cart amount** when a user changes item quantities.
 
-**This challenge consists of the following tasks:**
+**This challenge consists of one key feature:**
 
-- Add a new product to the page
-- Include the product's name, price, and a list of specifications
-- Style the item card to match the rest of the site
+- Update the total price in the shopping cart based on item quantity changes.
 
 ---
 
-## 🧩 a. Create a Product Item Card
+## 🔧 a. Dynamically Update the Cart Total
 
-The new item should be added in the main content area using HTML. It must display:
-
-- ✅ Product name
-- ✅ Product price
-- ✅ Product specifications (at least 3)
+The goal is to provide a responsive user experience by calculating and displaying the total price whenever item quantities are modified.
 
 <p align="center">
-  <img src="./assets/challenge02-product-preview.png" width="400px"/>
+  <img src="./assets/challenge03-cart-total-before.png" width="400px"/>
   <br/>
-  <b>Example of a Product Card</b>
+  <b>Before</b>: Total is incorrect or static
 </p>
-
----
 
 ### ✅ Steps
 
-1. Open the `index.html` file.
-2. Find or create a `<div>` container for your products.
-3. Add the following HTML structure inside it:
+1. Open the `cart.html` file.
+2. Ensure each cart item includes:
+   - A `span` or `div` element with the class `.price` and a `data-price` attribute
+   - An `<input>` element of type `number` with the class `.quantity`
+3. Add a `<span>` element with the `id="cart-total"` to display the total.
+4. Implement a JavaScript function that:
+   - Listens for changes in quantity
+   - Recalculates the total price
+   - Updates the content of `#cart-total`
+
+---
+
+### 💻 Example HTML Structure
 
 ```html
-<div class="product-card">
-  <h2 class="product-title">Eco Water Bottle</h2>
-  <p class="product-price">$12.99</p>
-  <ul class="product-specs">
-    <li>500ml capacity</li>
-    <li>Made from BPA-free materials</li>
-    <li>Keeps drinks cold for 12 hours</li>
-  </ul>
+<div class="cart-item">
+  <p>Eco Bottle</p>
+  <span class="price" data-price="10.99">$10.99</span>
+  <input type="number" class="quantity" value="1" min="1" />
 </div>
+
+<div class="cart-item">
+  <p>Reusable Bag</p>
+  <span class="price" data-price="5.49">$5.49</span>
+  <input type="number" class="quantity" value="2" min="1" />
+</div>
+
+<h3>Total: $<span id="cart-total">0.00</span></h3>
