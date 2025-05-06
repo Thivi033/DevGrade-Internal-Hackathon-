@@ -1,4 +1,4 @@
-describe('Challenge 1: Site Title Customization', () => {
+git describe('Challenge 1: Site Title Customization', () => {
     beforeEach(() => {
       document.body.innerHTML = `
         <html>
